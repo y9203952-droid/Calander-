@@ -3,5 +3,5 @@
 // Replace them with your real project values to enable sign-in,
 // shared memories, photo uploads, invites, and cloud syncing.
 
-export const SUPABASE_URL = "YOUR-PROJECT-URL";
+export const SUPABASE_URL = "https://mystxodvzisfwvtofllf.supabase.co";
 export const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
