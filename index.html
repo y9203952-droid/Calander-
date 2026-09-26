@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>World — Akarsh &amp; Ritu</title>
+  <meta name="description" content="World — a private memory space for Akarsh &amp; Ritu.">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+
+  <!-- AUTH -->
+  <section id="authScreen" class="auth-screen">
+    <div class="auth-card">
+      <div class="heart-mark">♡</div>
+      <div class="mini-label">OUR LITTLE WORLD</div>
+      <h1>Akarsh &amp; Ritu</h1>
+      <p>A private place for two hearts, photos, thoughts and the little moments you never want to forget.</p>
+      <label>Email<input id="email" type="email" autocomplete="email" placeholder="you@example.com"></label>
+      <label>Password<input id="password" type="password" autocomplete="current-password" placeholder="••••••••"></label>
+      <div class="auth-buttons">
+        <button id="signIn" class="btn primary">Sign in</button>
+        <button id="signUp" class="btn soft">Create account</button>
+      </div>
+      <small id="authHint">User A and User B use separate accounts.</small>
+    </div>
+  </section>
+
+  <!-- SPACE SETUP -->
+  <section id="spaceScreen" class="auth-screen hidden">
+    <div class="auth-card space-card">
+      <div class="heart-mark">♡</div>
+      <div class="mini-label">TWO HEARTS · ONE SPACE</div>
+      <h1>Make your little world</h1>
+      <p>Create the private A+B space, then send the one-time code to the other person.</p>
+      <label>Space name<input id="spaceNameInput" value="Akarsh & Ritu" maxlength="80"></label>
+      <button id="createSpace" class="btn primary full">Create shared space</button>
+      <div class="or"><span>or</span></div>
+      <label>Have an invite code?<input id="joinCode" placeholder="Paste the code from User A"></label>
+      <button id="joinSpace" class="btn soft full">Join shared space</button>
+      <div id="inviteBox" class="invite-box hidden">
+        <strong>Your invite code</strong>
+        <div class="invite-row"><input id="inviteCode" readonly><button id="copyInvite" class="btn soft">Copy</button></div>
+        <small id="inviteExpiry"></small>
+      </div>
+    </div>
+  </section>
+
+  <!-- APP -->
+  <div id="app" class="hidden">
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="brand">
+          <div class="brand-icon">♡</div>
+          <div><div class="brand-name">Akarsh &amp; Ritu</div><div class="brand-sub">Our Little World ♡</div></div>
+        </div>
+        <div class="hero-clock">
+          <div id="liveDate">Thursday, 25 September 2026</div>
+          <strong id="liveTime">17:42:36</strong>
+          <span id="greeting">Good evening, Akarsh &amp; Ritu ♡</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="app-shell">
+      <aside class="sidebar">
+        <nav>
+          <button class="nav-item active" data-target="home"><span>⌂</span>Home</button>
+          <button class="nav-item" data-target="calendar"><span>▣</span>Calendar</button>
+          <button class="nav-item" data-target="memories"><span>♡</span>Memories</button>
+          <button class="nav-item" data-target="rollback"><span>◷</span>Rollback</button>
+          <button class="nav-item" data-target="search"><span>⌕</span>Search</button>
+          <button class="nav-item" data-target="settings"><span>⚙</span>Settings</button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="forever">♡<br><small>Same people<br>Different dreams<br>Same forever ♡</small></div>
+          <button id="darkToggle" class="theme-toggle">☼ &nbsp; / &nbsp; ◐ <span>Light / Dark</span></button>
+          <button id="signOut" class="signout">Sign out</button>
+        </div>
+      </aside>
+
+      <main class="main">
+        <section class="welcome" id="home">
+          <div class="welcome-copy">
+            <div class="script-title">Hello Akarsh &amp; Ritu ♡</div>
+            <p>Collect beautiful moments, not things... <span>♥</span></p>
+            <div class="quick-actions">
+              <button id="addToday" class="quick pink"><b>＋</b><span>Add Memory</span></button>
+              <button id="viewCalendar" class="quick blue"><b>▣</b><span>View Calendar</span></button>
+              <button id="viewRollback" class="quick green"><b>◷</b><span>Memory Rollback</span></button>
+              <button id="focusSearch" class="quick purple"><b>⌕</b><span>Search</span></button>
+            </div>
+          </div>
+          <div class="polaroid"><div class="polaroid-photo"></div><strong>Better<br>Together ♡</strong></div>
+        </section>
+
+        <div class="dashboard-grid">
+          <div class="left-column">
+            <section class="card calendar-card" id="calendar">
+              <div class="card-head">
+                <div><h2 id="monthTitle">September 2026</h2></div>
+                <div class="month-controls"><button id="prevMonth">‹</button><button id="nextMonth">›</button></div>
+              </div>
+              <div class="weekdays"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+              <div id="calendarGrid" class="calendar-grid"></div>
+            </section>
+
+            <section class="rollback-banner" id="rollback">
+              <div class="rollback-content">
+                <div class="rollback-icon">◌</div>
+                <div>
+                  <div class="rollback-label">Memory Rollback</div>
+                  <h3>Take a trip down memory lane...</h3>
+                  <div class="rollback-meta" id="rollbackMeta"></div>
+                  <button id="rollbackOpen" class="pill-button">View Memories →</button>
+                </div>
+              </div>
+              <div class="rollback-stack">
+                <span></span><span></span><span></span>
+              </div>
+            </section>
+
+            <section class="card on-this-day" id="memories">
+              <div class="card-head"><h2>▣ &nbsp;On This Day</h2><button id="allMemories" class="text-button">View all →</button></div>
+              <div id="onThisDay" class="otd-grid"></div>
+            </section>
+          </div>
+
+          <aside class="right-column">
+            <section class="card recent-card">
+              <div class="card-head"><h2>Recent Memories</h2><button id="allRecent" class="text-button">View all →</button></div>
+              <div id="recentList" class="recent-list"></div>
+            </section>
+
+            <section class="card stats-card">
+              <div class="card-head"><h2>Our Stats</h2></div>
+              <div class="stats-grid">
+                <div><b id="statMemories">0</b><span>▧</span><small>Total Memories</small></div>
+                <div><b id="statPhotos">0</b><span>▣</span><small>Photos</small></div>
+                <div><b id="statThoughts">0</b><span>☏</span><small>Thoughts</small></div>
+                <div><b id="statFavorites">0</b><span>♡</span><small>Favorites</small></div>
+              </div>
+            </section>
+
+            <section class="card mood-card">
+              <div class="card-head"><div><h2>Today's Mood</h2><p>How are you feeling today?</p></div></div>
+              <div class="moods" id="moodPicker">
+                <button data-mood="😊">😊<small>Happy</small></button>
+                <button data-mood="😌">😌<small>Calm</small></button>
+                <button data-mood="🥰">🥰<small>Excited</small></button>
+                <button data-mood="💗">💗<small>Loved</small></button>
+                <button data-mood="😔">😔<small>Sad</small></button>
+              </div>
+              <div class="love-note">♡ <i>You + Me = Always ♡</i><span>⌁</span></div>
+            </section>
+          </aside>
+        </div>
+
+        <section id="search" class="card search-card hidden-section">
+          <div class="card-head"><h2>Search memories</h2></div>
+          <input id="searchInput" class="big-search" placeholder="Search thoughts, moods or dates…">
+          <div id="searchResults" class="search-results"></div>
+        </section>
+
+        <section id="settings" class="card settings-card hidden-section">
+          <div class="card-head"><h2>Private space</h2></div>
+          <p>This space is limited to <strong>Akarsh &amp; Ritu</strong>. Supabase Row Level Security and private photo storage enforce access at the database/storage level.</p>
+          <div class="setting-line"><span>Space</span><b id="settingsSpaceName">Akarsh & Ritu</b></div>
+          <div class="setting-line"><span>Members</span><b id="memberCount">0 / 2</b></div>
+          <div class="setting-line"><span>Space ID</span><code id="spaceId"></code></div>
+          <button id="newInvite" class="btn soft">♡ Create new invite</button>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- EDITOR -->
+  <div id="editor" class="modal-backdrop">
+    <div class="editor">
+      <div class="editor-head"><div><div class="mini-label">SHARED MEMORY</div><h2 id="editorTitle">Add Memory</h2><p id="editorDate"></p></div><button id="closeEditor" class="close">×</button></div>
+      <label>Thought<textarea id="thought" rows="5" placeholder="Write what happened today…"></textarea></label>
+      <label>Mood<select id="mood"><option>😊</option><option>😌</option><option>🥰</option><option>💗</option><option>😔</option><option>✨</option><option>😂</option><option>🌿</option></select></label>
+      <label class="checkbox"><input id="favorite" type="checkbox"> Favorite memory</label>
+      <div class="upload-box"><div class="upload-title">Photos</div><input id="photoInput" type="file" accept="image/*" multiple><div id="photoList"></div></div>
+      <div class="editor-actions"><button id="deleteMemory" class="btn danger">Delete</button><span></span><button id="saveMemory" class="btn primary">Save Memory</button></div>
+    </div>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
