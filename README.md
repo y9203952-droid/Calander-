@@ -1,17 +1,20 @@
-# Our Little World — cleaned website
+# Our Little World — merged build
 
-This package contains the current dashboard code with the PWA pieces removed.
+This build combines the complete shared-memory website with the newer animated Thought + Mood UI.
 
-## Files
-- `index.html` — complete website layout
-- `style.css` — complete responsive styling
-- `app.js` — dashboard/auth/memory/mood logic
-- `config.js` — Supabase configuration placeholders
+## Included
+- Full authentication / shared-space flow when Supabase is configured.
+- Calendar, memories, rollback, search, settings, favorites and photo uploads.
+- Clean readable Thought paragraphs.
+- Thought-only Edit button with a separate saved time.
+- Animated mood timeline with a timestamp for every mood entry.
+- Unified plum/purple colour system with dark mode enabled by default.
+- No PWA manifest or service-worker code.
 
-## Setup
-1. Open `config.js`.
-2. Replace `YOUR-PROJECT-URL` and `YOUR_SUPABASE_ANON_KEY` with your Supabase project URL and anon key.
-3. Serve the folder from a local web server (for example VS Code Live Server). ES modules and Supabase require HTTP(S), not `file://`.
+## Supabase
+Edit `config.js` with your Supabase URL and anon key to enable cloud features.
 
-## PWA status
-No manifest, service worker registration, install metadata, or PWA-specific files are included.
+Without Supabase values, the complete website opens in local preview mode so the UI is still visible and the Thought/Mood features work locally in the browser.
+
+## Run
+Use a local web server (for example VS Code Live Server) and open `index.html`.
