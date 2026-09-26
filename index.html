@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="A private little world for thoughts and moods.">
+  <link rel="stylesheet" href="style.css">
+  <title>Our Little World</title>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">OUR LITTLE WORLD</p>
+        <h1>Today</h1>
+      </div>
+      <div class="live-pill" aria-label="Current time">
+        <span class="live-dot"></span>
+        <span id="currentTime">--:--</span>
+      </div>
+    </header>
+
+    <section class="journal-section thought-section" aria-labelledby="thoughtTitle">
+      <div class="section-heading">
+        <div>
+          <h2 id="thoughtTitle">Thought</h2>
+          <p class="section-subtitle">A place to say what you really feel.</p>
+        </div>
+        <button id="editThoughtBtn" class="ghost-btn" type="button">Edit</button>
+      </div>
+
+      <article class="thought-card">
+        <div class="thought-time-box">
+          <span class="time-label">TIME</span>
+          <strong id="thoughtTime">--:--</strong>
+        </div>
+
+        <div class="thought-content-wrap">
+          <div id="thoughtText" class="thought-text" aria-label="Thought"></div>
+          <textarea id="thoughtEditor" class="thought-editor" aria-label="Edit thought" hidden></textarea>
+        </div>
+
+        <div class="thought-actions" hidden id="thoughtActions">
+          <button id="cancelThoughtBtn" class="secondary-btn" type="button">Cancel</button>
+          <button id="saveThoughtBtn" class="primary-btn" type="button">Save thought</button>
+        </div>
+      </article>
+    </section>
+
+    <section class="journal-section mood-section" aria-labelledby="moodTitle">
+      <div class="section-heading">
+        <div>
+          <h2 id="moodTitle">Mood</h2>
+          <p class="section-subtitle">Little feelings through the day.</p>
+        </div>
+        <button id="addMoodBtn" class="add-btn" type="button">
+          <span>+</span> Add mood
+        </button>
+      </div>
+
+      <div id="moodTimeline" class="mood-timeline" aria-live="polite"></div>
+      <div id="emptyMood" class="empty-mood" hidden>
+        <div class="empty-orb">♡</div>
+        <p>Your mood timeline will grow here.</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="moodModal" class="modal-backdrop" hidden>
+    <section class="mood-modal" role="dialog" aria-modal="true" aria-labelledby="moodModalTitle">
+      <button id="closeMoodModal" class="modal-close" type="button" aria-label="Close">×</button>
+      <p class="eyebrow">NEW ENTRY</p>
+      <h2 id="moodModalTitle">How are you feeling?</h2>
+
+      <div class="mood-picker" id="moodPicker">
+        <button type="button" class="mood-choice selected" data-emoji="🥰" data-label="Loved">🥰<span>Loved</span></button>
+        <button type="button" class="mood-choice" data-emoji="😊" data-label="Happy">😊<span>Happy</span></button>
+        <button type="button" class="mood-choice" data-emoji="😌" data-label="Peaceful">😌<span>Peaceful</span></button>
+        <button type="button" class="mood-choice" data-emoji="🥺" data-label="Soft">🥺<span>Soft</span></button>
+        <button type="button" class="mood-choice" data-emoji="😔" data-label="Low">😔<span>Low</span></button>
+        <button type="button" class="mood-choice" data-emoji="😤" data-label="Frustrated">😤<span>Frustrated</span></button>
+      </div>
+
+      <label class="mood-note-label" for="moodNote">A little note <span>optional</span></label>
+      <input id="moodNote" class="mood-note" maxlength="90" placeholder="What made you feel this way?">
+
+      <button id="saveMoodBtn" class="primary-btn wide-btn" type="button">Add to my timeline</button>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
